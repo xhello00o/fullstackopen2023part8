@@ -1,8 +1,28 @@
+import { useQuery } from "@apollo/client"
+import { ALL_AUTHORS } from "../queries"
+import EditAuthorBornYear from "./EditAuthorBornYear"
+
 const Authors = (props) => {
+  const result = useQuery(ALL_AUTHORS)
+  console.log("🚀 ~ file: Authors.js:8 ~ Authors ~ ALL_AUTHORS:", ALL_AUTHORS)
   if (!props.show) {
     return null
   }
-  const authors = []
+
+  
+  console.log("🚀 ~ file: Authors.js:10 ~ Authors ~ authors:", result)
+  
+
+  if (result.loading) {
+    return(
+      <p> Loading...</p>
+    )
+  }
+
+
+
+  const authors = result.data.allAuthors
+
 
   return (
     <div>
@@ -23,6 +43,7 @@ const Authors = (props) => {
           ))}
         </tbody>
       </table>
+      <EditAuthorBornYear authors={authors}/>
     </div>
   )
 }
