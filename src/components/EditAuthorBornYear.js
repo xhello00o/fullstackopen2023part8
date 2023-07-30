@@ -7,7 +7,7 @@ import { Autocomplete, TextField } from "@mui/material"
 const EditAuthorBornYear = ({authors}) => {
     const [ editAuthorYear] = useMutation(EDIT_AUTHOR,
         {refetchQueries:[{query:ALL_AUTHORS}]})
-    const [year , setYear] = useState(null)
+    const [year , setYear] = useState("")
     const [author, setAuthor] = useState(null)
     console.log(author,year)
     const handleEdit = (event) => {

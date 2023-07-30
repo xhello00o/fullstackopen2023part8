@@ -4,7 +4,6 @@ import EditAuthorBornYear from "./EditAuthorBornYear"
 
 const Authors = (props) => {
   const result = useQuery(ALL_AUTHORS)
-  console.log("🚀 ~ file: Authors.js:8 ~ Authors ~ ALL_AUTHORS:", ALL_AUTHORS)
   if (!props.show) {
     return null
   }
@@ -43,7 +42,11 @@ const Authors = (props) => {
           ))}
         </tbody>
       </table>
-      <EditAuthorBornYear authors={authors}/>
+      {props.token?
+      <EditAuthorBornYear authors={authors}/>:
+      null
+      }
+      
     </div>
   )
 }
